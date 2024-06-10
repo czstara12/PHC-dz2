@@ -8,3 +8,5 @@
 npm install
 npm run dev
 ```
+
+将[模型](https://huggingface.co/czstara12/yolov7-PCH-dz2/resolve/main/model.onnx)放进项目中(src)
