@@ -87,19 +87,25 @@ export const App = () => {
             }
 
             const classColors = ['#1a2edb', '#1adb39', '#db1a1a']; // Пример цветов
-            const classNames = ['bbq', 'chick', 'steck']; // Пример имен классов
+            const classRectColors = ['#FF0000', '#00FF00', '#FFFF00']
+            const classNames = ['шашлык', 'стейк', 'цыпленок']; // Пример имен классов
 
             boxes.forEach((box) => {
                 const [x1, y1, width, height] = box.bounding;
                 const classId = box.classId;
                 const className = classNames[classId];
                 const color = classColors[classId % classColors.length]; // Использование цвета по id класса
+                const rectColor = classRectColors[classId % classColors.length]; // Использование цвета по id класса
 
-                ctx!.strokeStyle = '#1a2edb'; // тёмно-синий цвет
+                ctx!.strokeStyle = rectColor; // тёмно-синий цвет
                 ctx!.lineWidth = 5; // толщина линии в 5px
                 ctx!.strokeRect(x1, y1, width, height);
-                ctx!.fillStyle = color;
-                ctx!.font = '20px Arial';
+
+                ctx!.fillStyle = rectColor;
+                ctx!.fillRect(x1, y1 > 20 ? y1 - 40 : y1 , 200, 40);
+
+                ctx!.fillStyle = '#000000';
+                ctx!.font = '32px Arial';
                 ctx!.fillText(className, x1, y1 > 20 ? y1 - 10 : y1 + 20);
             });
         }
